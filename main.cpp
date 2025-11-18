@@ -4,7 +4,7 @@
 
 using namespace std;
 
-class figure() {
+class figure {
     double x;
     double y;
   public:
@@ -17,17 +17,6 @@ class figure() {
 class round : public figure {
     double perimetr() {
         return x*y*3.14;
-    }
-};
-
-class round : public figure {
-    round() : figure(0,0) {}
-    round(x,y) : figure(x,y) {}
-    double perimetr() {
-        return x/2*3.14;
-    }
-    double area() {
-        return x/2*y/2*3.14;
     }
 };
 
