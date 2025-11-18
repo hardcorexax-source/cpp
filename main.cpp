@@ -10,8 +10,8 @@ class figure {
   public:
     figure() : x(0), y(0) {}
     figure() : x(x), y(y) {}
-    virtual double perimetr();
-    virtual double area();
+    virtual double perimetr() = 0;
+    virtual double area() = 0;
 };
 
 class round : public figure {
