@@ -47,5 +47,8 @@ int main() {
     arr.push_back(quadr(2,2));
     arr.push_back(round(2,2));
 
+    cout << arr[0].area() << arr[1].area() << endl;
+    cout << arr[0].perimetr() << arr[1].perimetr() << endl;
+
     return 0;
 }
