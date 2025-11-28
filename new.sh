@@ -1,0 +1,1 @@
+git pull && g++ -Wall new.cpp -o new && ./new
