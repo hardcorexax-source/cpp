@@ -1,17 +1,32 @@
 #include <iostream>
-#include <vector>
+#include <map>
+#include <functional>
 
-using namespace std;
+// Универсальный кеш для чистых функций f(int) -> int
+class Memo {
+public:
+    explicit Memo(std::function<long long(int)> func) : f(func) {}
 
-int main() {
-
-    cout << "hello" << endl;
-    for (int i =0; i < 10; ++i) {
-        cout << i << " ";
+    long long operator()(int n) {
+        if (cache.count(n)) return cache[n];
+        long long result = f(n);
+        cache[n] = result;
+        return result;
     }
 
-    cout << endl;
+private:
+    std::function<long long(int)> f;
+    std::map<int, long long> cache;
+};
 
+int main() {
+    // Оборачиваем лямбда-функцию в мемоизацию
+    Memo fib([&](int n) -> long long {
+        if (n <= 1) return n;
+        return fib(n-1) + fib(n-2);
+    });
 
-    return 0;
+    for (int i = 0; i <= 40; i++) {
+        std::cout << "fib(" << i << ") = " << fib(i) << "\n";
+    }
 }
